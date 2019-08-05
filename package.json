@@ -1,0 +1,35 @@
+{
+  "name": "ikeru",
+  "version": "0.0.0",
+  "description": "An awesome package",
+  "keywords": [],
+  "homepage": "https://github.com/vinsonchuong/ikeru",
+  "bugs": "https://github.com/vinsonchuong/ikeru/issues",
+  "license": "MIT",
+  "author": "Vinson Chuong <vinsonchuong@gmail.com>",
+  "repository": "vinsonchuong/ikeru",
+  "scripts": {
+    "prepare": "flow-typed update --skip",
+    "test": "if [ -n \"$CI\" ]; then standard -v && flow check && ava -v; else standard -v --fix && flow && ava -v; fi",
+    "release": "semantic-release",
+    "prepack": "build-esm"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^2.2.0",
+    "build-esm": "^4.2.1",
+    "flow-bin": "^0.104.0",
+    "flow-typed": "^2.6.1",
+    "overdub": "^2.4.0",
+    "semantic-release": "^15.13.19",
+    "standard-esnext": "^5.3.2"
+  },
+  "ava": {
+    "require": "overdub/register",
+    "babel": {
+      "testOptions": {
+        "extends": "overdub/babel"
+      }
+    }
+  }
+}

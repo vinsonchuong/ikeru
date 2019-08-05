@@ -1,0 +1,14 @@
+[ignore]
+.*/node_modules/config-chain/test/broken.json
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper='^ikeru$' -> '<PROJECT_ROOT>'
+module.name_mapper='^ikeru\/\(.*\)$' -> '<PROJECT_ROOT>/\1'
+
+[strict]
