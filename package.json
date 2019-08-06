@@ -1,8 +1,15 @@
 {
   "name": "ikeru",
   "version": "0.0.0",
-  "description": "An awesome package",
-  "keywords": [],
+  "description": "The art of arranging data",
+  "keywords": [
+    "data",
+    "structure",
+    "tree",
+    "graph",
+    "binary",
+    "search"
+  ],
   "homepage": "https://github.com/vinsonchuong/ikeru",
   "bugs": "https://github.com/vinsonchuong/ikeru/issues",
   "license": "MIT",

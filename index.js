@@ -1,2 +1,2 @@
 /* @flow */
-export default 'Hello World!'
+export { default as BinarySearchTree } from './lib/binary-search-tree'
