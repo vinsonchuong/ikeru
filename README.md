@@ -19,19 +19,16 @@ yarn add ikeru
 ```js
 import { BinarySearchTree } from 'ikeru'
 
-const tree = new BinarySearchTree()
-
-tree.set(5, { name: 'Five' })
-tree.set(3, { name: 'Three' })
-tree.set(7, { name: 'Seven' })
+let tree = new BinarySearchTree(5, { name: 'Five' })
+tree = tree.set(3, { name: 'Three' })
+tree = tree.set(7, { name: 'Seven' })
 
 console.log(tree.get(1)) // null
-tree.get(5).description = 'mutate values'
 
-for (const [key, value] of tree) {
-  console.log(key, value)
+for (const node of tree) {
+  console.log(node.key, node.value)
   // 3, { name: 'Three' }
-  // 5, { name: 'Five', description: 'mutate values' }
+  // 5, { name: 'Five' }
   // 7, { name: 'Seven' }
 }
 
@@ -39,8 +36,7 @@ console.log(JSON.stringify(tree), null, 2)
 // {
 //   "key": 5,
 //   "value": {
-//     "name": "Five",
-//     "description": "mutate values"
+//     "name": "Five"
 //   },
 //   "left": {
 //     "key": 3,
@@ -60,10 +56,10 @@ console.log(JSON.stringify(tree), null, 2)
 //   }
 // }
 
-tree.delete(5)
+tree = tree.delete(5)
 
-for (const [key, value] of tree) {
-  console.log(key, value)
+for (const node of tree) {
+  console.log(node.key, node.value)
   // 3, { name: 'Three' }
   // 7, { name: 'Seven' }
 }
