@@ -32,7 +32,8 @@ for (const node of tree) {
   // 7, { name: 'Seven' }
 }
 
-console.log(JSON.stringify(tree), null, 2)
+const serializedData = JSON.stringify(tree, null, 2)
+console.log(serializedData)
 // {
 //   "key": 5,
 //   "value": {
@@ -55,6 +56,14 @@ console.log(JSON.stringify(tree), null, 2)
 //     "right": null
 //   }
 // }
+
+tree = BinarySearchTree.fromObject(JSON.parse(serializedData))
+for (const node of tree) {
+  console.log(node.key, node.value)
+  // 3, { name: 'Three' }
+  // 5, { name: 'Five' }
+  // 7, { name: 'Seven' }
+}
 
 tree = tree.delete(5)
 
