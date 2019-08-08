@@ -10,5 +10,6 @@
 [options]
 module.name_mapper='^ikeru$' -> '<PROJECT_ROOT>'
 module.name_mapper='^ikeru\/\(.*\)$' -> '<PROJECT_ROOT>/\1'
+esproposal.optional_chaining=enable
 
 [strict]
