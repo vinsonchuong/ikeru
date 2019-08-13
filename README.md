@@ -15,7 +15,6 @@ yarn add ikeru
 ```
 
 ### `BinarySearchTree`
-
 ```js
 import { BinarySearchTree } from 'ikeru'
 
@@ -65,6 +64,25 @@ for (const node of tree) {
   // 7, { name: 'Seven' }
 }
 
+tree = tree.delete(5)
+
+for (const node of tree) {
+  console.log(node.key, node.value)
+  // 3, { name: 'Three' }
+  // 7, { name: 'Seven' }
+}
+```
+
+### `RedBlackTree`
+A `BinarySearchTree` that reorganizes itself when updated to ensure fast
+reads and writes.
+
+```js
+import { RedBlackTree } from 'ikeru'
+
+let tree = new RedBlackTree(5, { name: 'Five' })
+tree = tree.set(3, { name: 'Three' })
+tree = tree.set(7, { name: 'Seven' })
 tree = tree.delete(5)
 
 for (const node of tree) {
