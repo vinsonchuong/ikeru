@@ -21,13 +21,12 @@
     "release": "semantic-release",
     "prepack": "build-esm"
   },
-  "dependencies": {
-    "flow-typed": "^2.6.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "ava": "^2.3.0",
     "build-esm": "^4.2.1",
     "flow-bin": "^0.106.1",
+    "flow-typed": "^2.6.1",
     "lodash": "^4.17.15",
     "overdub": "^2.4.0",
     "semantic-release": "^15.13.24",
