@@ -891,7 +891,7 @@ test('deleting the 7th node (left, left)', t => {
 
 test('randomly generated trees are valid', t => {
   /* eslint-disable no-unused-vars */
-  const iterations = process.env.CI ? 1000000 : 1000
+  const iterations = process.env.CI ? 100000 : 1000
 
   for (const testIteration of range(iterations)) {
     let tree
