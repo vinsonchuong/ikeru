@@ -1,0 +1,13 @@
+[ignore]
+<PROJECT_ROOT>/dist/.*
+<PROJECT_ROOT>/node_modules/.*/test/.*
+
+[include]
+
+[libs]
+
+[options]
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
+module.name_mapper='^ikeru$' -> '<PROJECT_ROOT>'
+module.name_mapper='^ikeru\/\(.*\)$' -> '<PROJECT_ROOT>/\1'

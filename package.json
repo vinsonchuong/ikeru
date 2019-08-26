@@ -16,14 +16,19 @@
   "author": "Vinson Chuong <vinsonchuong@gmail.com>",
   "repository": "vinsonchuong/ikeru",
   "scripts": {
-    "test": "if [ -n \"$CI\" ]; then standard -v && ava -v; else standard -v --fix && ava -v; fi",
+    "prepare": "flow-typed update --skip",
+    "test": "if [ -n \"$CI\" ]; then standard -v && flow check && ava -v; else standard -v --fix && flow && ava -v; fi",
     "release": "semantic-release",
     "prepack": "build-esm"
   },
-  "dependencies": {},
+  "dependencies": {
+    "flow-bin": "^0.105.2",
+    "flow-typed": "^2.6.1"
+  },
   "devDependencies": {
     "ava": "^2.2.0",
     "build-esm": "^4.2.1",
+    "lodash": "^4.17.15",
     "overdub": "^2.4.0",
     "semantic-release": "^15.13.19",
     "standard-esnext": "^5.3.2"

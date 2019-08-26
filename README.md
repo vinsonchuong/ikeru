@@ -15,24 +15,29 @@ yarn add ikeru
 ```
 
 ### `BinarySearchTree`
+A sorted dictionary of number keys to arbitrary values.
+
+Note that these trees do not self-balance. See [`RedBlackTree`](#redblacktree).
+
 ```js
-import { BinarySearchTree } from 'ikeru'
+import { get, set, remove, entries } from 'ikeru/binary-search-tree'
 
-let tree = new BinarySearchTree(5, { name: 'Five' })
-tree = tree.set(3, { name: 'Three' })
-tree = tree.set(7, { name: 'Seven' })
+let tree
+tree = set(tree, 5, { title: 'Five' })
+tree = set(tree, 3, { title: 'Three' })
+tree = set(tree, 7, { title: 'Seven' })
 
-console.log(tree.get(1)) // null
+console.log(get(tree, 1))
+// null
 
-for (const node of tree) {
-  console.log(node.key, node.value)
-  // 3, { name: 'Three' }
-  // 5, { name: 'Five' }
-  // 7, { name: 'Seven' }
+for (const node of entries(tree)) {
+  console.log(node.key, node.title)
+  // 3, 'Three'
+  // 5, 'Five'
+  // 7, 'Seven'
 }
 
-const serializedData = JSON.stringify(tree, null, 2)
-console.log(serializedData)
+console.log(JSON.stringify(tree, null, 2))
 // {
 //   "key": 5,
 //   "value": {
@@ -56,17 +61,9 @@ console.log(serializedData)
 //   }
 // }
 
-tree = BinarySearchTree.fromObject(JSON.parse(serializedData))
-for (const node of tree) {
-  console.log(node.key, node.value)
-  // 3, { name: 'Three' }
-  // 5, { name: 'Five' }
-  // 7, { name: 'Seven' }
-}
+tree = remove(tree, 5)
 
-tree = tree.delete(5)
-
-for (const node of tree) {
+for (const node of entries(tree)) {
   console.log(node.key, node.value)
   // 3, { name: 'Three' }
   // 7, { name: 'Seven' }
@@ -74,20 +71,23 @@ for (const node of tree) {
 ```
 
 ### `RedBlackTree`
-A `BinarySearchTree` that reorganizes itself when updated to ensure fast
-reads and writes.
+A [`BinarySearchTree`](#binarysearchtree) that self-balances after every update,
+maintaining `O(log n)` reads and writes.
+
+`RedBlackTree` follows the same interface as `BinarySearchTree`.
 
 ```js
-import { RedBlackTree } from 'ikeru'
+import { get, set, remove, entries } from 'ikeru/red-black-tree'
 
-let tree = new RedBlackTree(5, { name: 'Five' })
-tree = tree.set(3, { name: 'Three' })
-tree = tree.set(7, { name: 'Seven' })
-tree = tree.delete(5)
+let tree
+tree = set(tree, 5, { title: 'Five' })
+tree = set(tree, 3, { title: 'Three' })
+tree = set(tree, 7, { title: 'Seven' })
 
-for (const node of tree) {
-  console.log(node.key, node.value)
-  // 3, { name: 'Three' }
-  // 7, { name: 'Seven' }
+for (const node of entries(tree)) {
+  console.log(node.key, node.title)
+  // 3, 'Three'
+  // 5, 'Five'
+  // 7, 'Seven'
 }
 ```
