@@ -23,14 +23,14 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "ava": "^2.3.0",
-    "build-esm": "^4.2.1",
-    "flow-bin": "^0.106.1",
+    "ava": "^2.4.0",
+    "build-esm": "^4.2.2",
+    "flow-bin": "^0.108.0",
     "flow-typed": "^2.6.1",
     "lodash": "^4.17.15",
-    "overdub": "^2.4.0",
+    "overdub": "^2.5.1",
     "semantic-release": "^15.13.24",
-    "standard-esnext": "^5.3.2"
+    "standard-esnext": "^5.3.4"
   },
   "ava": {
     "require": "overdub/register",
