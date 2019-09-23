@@ -91,3 +91,29 @@ for (const node of entries(tree)) {
   // 7, 'Seven'
 }
 ```
+
+### `TimeSeries`
+`ikeru` provides various utilities for summarizing and transforming time series
+data.
+
+```js
+import { merge } from 'ikeru/time-series'
+
+const series1 = [
+  { time: new Date('2019-01-01') },
+  { time: new Date('2019-01-03') },
+  { time: new Date('2019-01-07') }
+]
+const series2 = [
+  { time: new Date('2019-01-02') },
+  { time: new Date('2019-01-04') },
+  { time: new Date('2019-01-08') }
+]
+const series3 = [
+  { time: new Date('2019-01-05') },
+  { time: new Date('2019-01-06') },
+  { time: new Date('2019-01-09') }
+]
+
+const series = merge(series1, series2, series3)
+```
