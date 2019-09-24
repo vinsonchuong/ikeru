@@ -2,7 +2,9 @@
 import type { TimeSeries } from 'ikeru/time-series'
 import { initialize, next } from './tournament-tree'
 
-export default function(...timeSeriesList: Array<TimeSeries>): TimeSeries {
+export default function<Data>(
+  ...timeSeriesList: Array<TimeSeries<Data>>
+): TimeSeries<Data> {
   if (timeSeriesList.length === 0) {
     return []
   }

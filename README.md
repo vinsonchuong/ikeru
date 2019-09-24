@@ -97,23 +97,30 @@ for (const node of entries(tree)) {
 data.
 
 ```js
-import { merge } from 'ikeru/time-series'
+import { merge, downsample } from 'ikeru/time-series'
+import { startOfMonth } from 'date-fns'
 
 const series1 = [
   { time: new Date('2019-01-01') },
-  { time: new Date('2019-01-03') },
-  { time: new Date('2019-01-07') }
+  { time: new Date('2019-02-03') },
+  { time: new Date('2019-03-07') }
 ]
 const series2 = [
   { time: new Date('2019-01-02') },
-  { time: new Date('2019-01-04') },
-  { time: new Date('2019-01-08') }
+  { time: new Date('2019-02-04') },
+  { time: new Date('2019-03-08') }
 ]
 const series3 = [
   { time: new Date('2019-01-05') },
-  { time: new Date('2019-01-06') },
-  { time: new Date('2019-01-09') }
+  { time: new Date('2019-02-06') },
+  { time: new Date('2019-03-09') }
 ]
 
 const series = merge(series1, series2, series3)
+
+const monthly = downsample(
+  series,
+  point => startOfMonth(point.time),
+  (time, points) => ({ time })
+)
 ```
