@@ -18,8 +18,9 @@ test('merging multiple time series', t => {
     { time: new Date('2019-01-06') },
     { time: new Date('2019-01-09') }
   ]
+  const series4 = []
 
-  t.deepEqual(merge(series1, series2, series3), [
+  t.deepEqual(merge(series1, series2, series3, series4), [
     { time: new Date('2019-01-01') },
     { time: new Date('2019-01-02') },
     { time: new Date('2019-01-03') },

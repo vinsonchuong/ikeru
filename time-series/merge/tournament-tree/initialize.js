@@ -10,12 +10,21 @@ export default function<Value>(
   const numLeafNodes = Math.ceil(Math.log2(queues.length)) ** 2
   while (index < numLeafNodes) {
     if (index < queues.length) {
-      const [first, ...rest] = queues[index]
-      leafNodes.push({
-        queue: rest,
-        key: getKey(first),
-        value: first
-      })
+      const queue = queues[index]
+      if (queue.length > 0) {
+        const [first, ...rest] = queue
+        leafNodes.push({
+          queue: rest,
+          key: getKey(first),
+          value: first
+        })
+      } else {
+        leafNodes.push({
+          queue: [],
+          key: Infinity,
+          value: null
+        })
+      }
     } else {
       leafNodes.push({
         queue: [],
