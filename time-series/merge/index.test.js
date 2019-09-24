@@ -2,6 +2,20 @@
 import test from 'ava'
 import { merge } from 'ikeru/time-series'
 
+test('merging 0 time series', t => {
+  t.deepEqual(merge(), [])
+})
+
+test('merging 1 time series', t => {
+  const series = [
+    { time: new Date('2019-01-01') },
+    { time: new Date('2019-01-03') },
+    { time: new Date('2019-01-07') }
+  ]
+
+  t.deepEqual(merge(series), series)
+})
+
 test('merging multiple time series', t => {
   const series1 = [
     { time: new Date('2019-01-01') },
