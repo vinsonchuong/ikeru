@@ -97,8 +97,10 @@ for (const node of entries(tree)) {
 data.
 
 ```js
-import { merge, downsample, interpolate } from 'ikeru/time-series'
-import { startOfMonth, differenceInDays, addDays } from 'date-fns'
+import { merge, downsample, interpolate, extrapolate } from 'ikeru/time-series'
+import {
+  getMonth, startOfMonth, differenceInDays, addDays, addMonths, subMonths
+} from 'date-fns'
 
 const series1 = [
   { time: new Date('2019-01-01') },
@@ -134,6 +136,29 @@ const monthly = interpolate(
       point = {
         time: addDays(point.time, 1)
       }
+      newPoints.push(point)
+    }
+    return newPoints
+  }
+)
+
+const everyMonthInYear = extrapolate(
+  monthly,
+  start => {
+    const newPoints = []
+    let point = start
+    while (getMonth(point) > 0) {
+      point = subMonths(point, 1)
+      newPoints.push(point)
+    }
+    newPoints.reverse()
+    return newPoints
+  },
+  end => {
+    const newPoints = []
+    let point = end
+    while (getMonth(point) < 11) {
+      point = addMonths(point, 1)
       newPoints.push(point)
     }
     return newPoints
