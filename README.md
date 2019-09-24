@@ -97,8 +97,8 @@ for (const node of entries(tree)) {
 data.
 
 ```js
-import { merge, downsample } from 'ikeru/time-series'
-import { startOfMonth } from 'date-fns'
+import { merge, downsample, interpolate } from 'ikeru/time-series'
+import { startOfMonth, differenceInDays, addDays } from 'date-fns'
 
 const series1 = [
   { time: new Date('2019-01-01') },
@@ -113,14 +113,30 @@ const series2 = [
 const series3 = [
   { time: new Date('2019-01-05') },
   { time: new Date('2019-02-06') },
-  { time: new Date('2019-03-09') }
+  { time: new Date('2019-03-09') },
+  { time: new Date('2019-05-03') }
 ]
 
 const series = merge(series1, series2, series3)
 
-const monthly = downsample(
+const monthlyMissingApril = downsample(
   series,
   point => startOfMonth(point.time),
   (time, points) => ({ time })
+)
+
+const monthly = interpolate(
+  monthlyMissingApril,
+  (before, after) => {
+    const newPoints = []
+    let point = before
+    while (differenceInDays(after.time, point.time) > 1) {
+      point = {
+        time: addDays(point.time, 1)
+      }
+      newPoints.push(point)
+    }
+    return newPoints
+  }
 )
 ```
