@@ -39,3 +39,11 @@ test('filling in gaps in a time series', t => {
     ]
   )
 })
+
+test('not breaking on an empty or single point time series', t => {
+  t.deepEqual(interpolate([], () => []), [])
+
+  t.deepEqual(interpolate([{ time: new Date('2019-01-01') }], () => []), [
+    { time: new Date('2019-01-01') }
+  ])
+})

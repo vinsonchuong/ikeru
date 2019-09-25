@@ -5,6 +5,10 @@ export default function<Data>(
   timeSeries: TimeSeries<Data>,
   generate: (TimeSeriesPoint<Data>, TimeSeriesPoint<Data>) => TimeSeries<Data>
 ): TimeSeries<Data> {
+  if (timeSeries.length < 2) {
+    return timeSeries
+  }
+
   const interpolated = []
   let index = 0
   while (index < timeSeries.length - 1) {
