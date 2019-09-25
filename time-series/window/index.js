@@ -12,14 +12,14 @@ export default function<Data>(
 
   let startIndex = 0
   while (
-    timeSeries[startIndex].time < start &&
-    startIndex < timeSeries.length
+    startIndex < timeSeries.length &&
+    timeSeries[startIndex].time < start
   ) {
     startIndex++
   }
 
   let endIndex = timeSeries.length - 1
-  while (timeSeries[endIndex].time > end && endIndex > 0) {
+  while (endIndex > 0 && timeSeries[endIndex].time > end) {
     endIndex--
   }
 
