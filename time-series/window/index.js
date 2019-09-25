@@ -6,6 +6,10 @@ export default function<Data>(
   start: Date,
   end: Date
 ): TimeSeries<Data> {
+  if (timeSeries.length === 0) {
+    return timeSeries
+  }
+
   let startIndex = 0
   while (
     timeSeries[startIndex].time < start &&
