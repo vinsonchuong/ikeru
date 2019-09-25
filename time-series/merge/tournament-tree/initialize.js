@@ -7,7 +7,7 @@ export default function<Value>(
 ): TournamentTree<Value> {
   const leafNodes = []
   let index = 0
-  const numLeafNodes = Math.ceil(Math.log2(queues.length)) ** 2
+  const numLeafNodes = 2 ** Math.ceil(Math.log2(queues.length))
   while (index < numLeafNodes) {
     if (index < queues.length) {
       const queue = queues[index]
