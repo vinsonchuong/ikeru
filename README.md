@@ -97,7 +97,9 @@ for (const node of entries(tree)) {
 data.
 
 ```js
-import { merge, downsample, interpolate, extrapolate } from 'ikeru/time-series'
+import {
+  merge, downsample, interpolate, extrapolate, window
+} from 'ikeru/time-series'
 import {
   getMonth, startOfMonth, differenceInDays, addDays, addMonths, subMonths
 } from 'date-fns'
@@ -163,5 +165,11 @@ const everyMonthInYear = extrapolate(
     }
     return newPoints
   }
+)
+
+const firstThreeMonths = window(
+  everyMonthInYear,
+  new Date('2019-01-01'),
+  new Date('2019-03-31')
 )
 ```
