@@ -98,7 +98,7 @@ data.
 
 ```js
 import {
-  merge, downsample, interpolate, extrapolate, window
+  merge, downsample, interpolate, extrapolate, window, join
 } from 'ikeru/time-series'
 import {
   getMonth, startOfMonth, differenceInDays, addDays, addMonths, subMonths
@@ -172,4 +172,20 @@ const firstThreeMonths = window(
   new Date('2019-01-01'),
   new Date('2019-03-31')
 )
+
+
+const parallelSeries1 = [
+  { time: Date.parse('2019-01-01'), value: 1 },
+  { time: Date.parse('2019-01-02'), value: 2 },
+  { time: Date.parse('2019-01-03'), value: 3 }
+]
+const parallelSeries2 = [
+  { time: Date.parse('2019-01-01'), value: 4 },
+  { time: Date.parse('2019-01-02'), value: 5 },
+  { time: Date.parse('2019-01-03'), value: 6 }
+]
+const addedUp = join([parallelSeries1, parallelSeries2], (time, [p1, p2]) => ({
+  time,
+  value: p1.value + p2.value
+}))
 ```
