@@ -5,6 +5,10 @@ export default function<Data>(
   timeSeriesList: Array<TimeSeries<Data>>,
   combine: (number, Array<TimeSeriesPoint<Data>>) => TimeSeriesPoint<Data>
 ): TimeSeries<Data> {
+  if (timeSeriesList.length === 0) {
+    return []
+  }
+
   return timeSeriesList[0].map(({ time }, i) =>
     combine(time.valueOf(), timeSeriesList.map(timeSeries => timeSeries[i]))
   )

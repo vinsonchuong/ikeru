@@ -27,3 +27,12 @@ test('combining multiple time series by time', t => {
     ]
   )
 })
+
+test('allowing for an empty set of time series', t => {
+  t.deepEqual(
+    join([], () => {
+      throw new Error('Error')
+    }),
+    []
+  )
+})
