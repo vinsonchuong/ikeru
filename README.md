@@ -105,27 +105,27 @@ import {
 } from 'date-fns'
 
 const series1 = [
-  { time: new Date('2019-01-01') },
-  { time: new Date('2019-02-03') },
-  { time: new Date('2019-03-07') }
+  { time: Date.parse('2019-01-01') },
+  { time: Date.parse('2019-02-03') },
+  { time: Date.parse('2019-03-07') }
 ]
 const series2 = [
-  { time: new Date('2019-01-02') },
-  { time: new Date('2019-02-04') },
-  { time: new Date('2019-03-08') }
+  { time: Date.parse('2019-01-02') },
+  { time: Date.parse('2019-02-04') },
+  { time: Date.parse('2019-03-08') }
 ]
 const series3 = [
-  { time: new Date('2019-01-05') },
-  { time: new Date('2019-02-06') },
-  { time: new Date('2019-03-09') },
-  { time: new Date('2019-05-03') }
+  { time: Date.parse('2019-01-05') },
+  { time: Date.parse('2019-02-06') },
+  { time: Date.parse('2019-03-09') },
+  { time: Date.parse('2019-05-03') }
 ]
 
 const series = merge(series1, series2, series3)
 
 const monthlyMissingApril = downsample(
   series,
-  point => startOfMonth(point.time),
+  point => startOfMonth(point.time).getTime(),
   (time, points) => ({ time })
 )
 
@@ -136,7 +136,7 @@ const monthly = interpolate(
     let point = before
     while (differenceInDays(after.time, point.time) > 1) {
       point = {
-        time: addDays(point.time, 1)
+        time: addDays(point.time, 1).getTime()
       }
       newPoints.push(point)
     }
@@ -149,7 +149,7 @@ const everyMonthInYear = extrapolate(
   start => {
     const newPoints = []
     let point = start
-    while (getMonth(point) > 0) {
+    while (getMonth(point.time) > 0) {
       point = subMonths(point, 1)
       newPoints.push(point)
     }
@@ -159,8 +159,8 @@ const everyMonthInYear = extrapolate(
   end => {
     const newPoints = []
     let point = end
-    while (getMonth(point) < 11) {
-      point = addMonths(point, 1)
+    while (getMonth(point.time) < 11) {
+      point = addMonths(point.time, 1)
       newPoints.push(point)
     }
     return newPoints
@@ -169,8 +169,8 @@ const everyMonthInYear = extrapolate(
 
 const firstThreeMonths = window(
   everyMonthInYear,
-  new Date('2019-01-01'),
-  new Date('2019-03-31')
+  Date.parse('2019-01-01'),
+  Date.parse('2019-03-31')
 )
 
 

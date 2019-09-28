@@ -1,3 +1,3 @@
 /* @flow */
 
-export type TimeSeriesPoint<Data> = { ...Data, time: Date }
+export type TimeSeriesPoint<Data> = { ...Data, time: number }

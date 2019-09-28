@@ -13,7 +13,7 @@ export default function<Data>(
   }
 
   function getKey(item) {
-    return item.time.valueOf()
+    return item.time
   }
   let tournamentTree = initialize(timeSeriesList, getKey)
   const merged = []

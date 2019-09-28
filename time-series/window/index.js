@@ -3,8 +3,8 @@ import type { TimeSeries } from '../'
 
 export default function<Data>(
   timeSeries: TimeSeries<Data>,
-  start: Date,
-  end: Date
+  start: number,
+  end: number
 ): TimeSeries<Data> {
   if (timeSeries.length === 0) {
     return timeSeries
