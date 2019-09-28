@@ -22,11 +22,11 @@ export default function next<Value>(
     }
   } else {
     const parent1 =
-      tournamentTree.parent1.key === tournamentTree.key
+      tournamentTree.parent1.value === tournamentTree.value
         ? next(tournamentTree.parent1, getKey)
         : tournamentTree.parent1
     const parent2 =
-      tournamentTree.parent2.key === tournamentTree.key
+      tournamentTree.parent2.value === tournamentTree.value
         ? next(tournamentTree.parent2, getKey)
         : tournamentTree.parent2
     const winner = parent1.key < parent2.key ? parent1 : parent2

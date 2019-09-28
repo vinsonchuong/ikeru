@@ -46,3 +46,13 @@ test('merging multiple time series', t => {
     { time: Date.parse('2019-01-09') }
   ])
 })
+
+test('merging time series with the same dates', t => {
+  const series1 = [{ time: Date.parse('2019-01-01') }]
+  const series2 = [{ time: Date.parse('2019-01-01') }]
+
+  t.deepEqual(merge(series1, series2), [
+    { time: Date.parse('2019-01-01') },
+    { time: Date.parse('2019-01-01') }
+  ])
+})
