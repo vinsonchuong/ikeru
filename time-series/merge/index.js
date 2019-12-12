@@ -1,6 +1,6 @@
 /* @flow */
 import type { TimeSeries } from 'ikeru/time-series'
-import { initialize, next } from './tournament-tree'
+import { initialize, next } from '../tournament-tree'
 
 export default function<Data>(
   ...timeSeriesList: Array<TimeSeries<Data>>
