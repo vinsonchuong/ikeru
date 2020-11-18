@@ -30,7 +30,7 @@
     "flow-typed": "^2.6.1",
     "lodash": "^4.17.15",
     "overdub": "^2.5.1",
-    "semantic-release": "^15.13.24",
+    "semantic-release": "^17.2.3",
     "standard-esnext": "^5.3.4"
   },
   "ava": {
